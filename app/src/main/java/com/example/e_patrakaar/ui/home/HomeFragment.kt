@@ -5,19 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
 import com.example.e_patrakaar.databinding.FragmentHomeBinding
+import com.example.e_patrakaar.ui.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,12 +24,17 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val viewPager: ViewPager = binding.viewPager
+//        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), parentFragmentManager)
+//        viewPager.adapter = sectionsPagerAdapter
+        viewPager.isFocusable = true
 
-        val tabLayout = binding.tabs
+        val tabLayout : TabLayout = binding.tabs
+        tabLayout.setupWithViewPager(viewPager)
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
@@ -42,16 +45,11 @@ class HomeFragment : Fragment() {
                     4 -> Toast.makeText(context, "This is entertainment", Toast.LENGTH_SHORT).show()
                     5 -> Toast.makeText(context, "This is technology", Toast.LENGTH_SHORT).show()
                 }
-
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab) {
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
 
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-
-            }
+            override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
 
