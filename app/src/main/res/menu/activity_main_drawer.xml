@@ -5,9 +5,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_darkTheme"
+            android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_nights_stay_24"
-            android:title="Dark Theme" />
+            android:title="Home" />
         <item
             android:id="@+id/nav_privacy"
             android:icon="@drawable/ic_baseline_privacy_tip_24"

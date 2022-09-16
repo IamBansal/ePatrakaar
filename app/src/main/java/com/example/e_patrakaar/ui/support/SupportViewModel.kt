@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class SupportViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is support Fragment"
+        value = "Reach us out"
     }
     val text: LiveData<String> = _text
 }
