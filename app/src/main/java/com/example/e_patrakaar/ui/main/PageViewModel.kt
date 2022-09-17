@@ -1,4 +1,4 @@
-package com.example.e_patrakaar.ui
+package com.example.e_patrakaar.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

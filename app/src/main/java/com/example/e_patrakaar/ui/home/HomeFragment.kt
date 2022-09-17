@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.e_patrakaar.databinding.FragmentHomeBinding
-import com.example.e_patrakaar.ui.SectionsPagerAdapter
+import com.example.e_patrakaar.ui.main.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
@@ -29,11 +29,13 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val viewPager: ViewPager = binding.viewPager
-//        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), parentFragmentManager)
-//        viewPager.adapter = sectionsPagerAdapter
+        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), parentFragmentManager)
+        viewPager.adapter = sectionsPagerAdapter
         viewPager.isFocusable = true
 
         val tabLayout : TabLayout = binding.tabs
+        tabLayout.setScrollPosition(0, 0f, true)
+        viewPager.currentItem = 0
         tabLayout.setupWithViewPager(viewPager)
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {

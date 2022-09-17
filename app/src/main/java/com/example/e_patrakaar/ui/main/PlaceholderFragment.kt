@@ -1,10 +1,12 @@
-package com.example.e_patrakaar.ui
+package com.example.e_patrakaar.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.e_patrakaar.databinding.FragmentTabbedMainBinding
 
@@ -22,7 +24,7 @@ class PlaceholderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProvider(this)[PageViewModel::class.java].apply {
+        pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
@@ -35,6 +37,10 @@ class PlaceholderFragment : Fragment() {
         _binding = FragmentTabbedMainBinding.inflate(inflater, container, false)
         val root = binding.root
 
+//        val textView: TextView = binding.sectionLabel
+//        pageViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         return root
     }
 
