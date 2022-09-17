@@ -40,12 +40,14 @@ class HomeFragment : Fragment() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
-                    0 -> Toast.makeText(context, "This is home", Toast.LENGTH_SHORT).show()
-                    1 -> Toast.makeText(context, "This is sports", Toast.LENGTH_SHORT).show()
-                    2 -> Toast.makeText(context, "This is health", Toast.LENGTH_SHORT).show()
-                    3 -> Toast.makeText(context, "This is science", Toast.LENGTH_SHORT).show()
-                    4 -> Toast.makeText(context, "This is entertainment", Toast.LENGTH_SHORT).show()
-                    5 -> Toast.makeText(context, "This is technology", Toast.LENGTH_SHORT).show()
+                    0 -> Toast.makeText(context, "Latest news", Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(context, "This is national", Toast.LENGTH_SHORT).show()
+                    2 -> Toast.makeText(context, "This is state", Toast.LENGTH_SHORT).show()
+                    3 -> Toast.makeText(context, "This is international", Toast.LENGTH_SHORT).show()
+                    4 -> Toast.makeText(context, "This is sports", Toast.LENGTH_SHORT).show()
+                    5 -> Toast.makeText(context, "This is entertainment", Toast.LENGTH_SHORT).show()
+                    6 -> Toast.makeText(context, "This is business", Toast.LENGTH_SHORT).show()
+                    7 -> Toast.makeText(context, "This is utility", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -54,20 +56,9 @@ class HomeFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
-
-        //To set different width for a tab.
-        setTabWidth(0, 0.7f, tabLayout)
-        setTabWidth(1, 0.7f, tabLayout)
-        setTabWidth(2, 0.7f, tabLayout)
-        setTabWidth(3, 0.7f, tabLayout)
-        setTabWidth(4, 1.0f, tabLayout)
-        setTabWidth(5, 1.0f, tabLayout)
-
         return root
     }
 
-
-    //Function to set different width for a tab.
     private fun setTabWidth(tabPosition: Int, weight: Float, tabLayout: TabLayout) {
         val layout: LinearLayout =
             (tabLayout.getChildAt(0) as LinearLayout).getChildAt(tabPosition) as LinearLayout
