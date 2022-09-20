@@ -20,4 +20,10 @@
     <string name="tab_text_6">Entertainment</string>
     <string name="tab_text_7">Business</string>
     <string name="tab_text_8">Utility</string>
+    <string name="news">News</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="about">About</string>
+    <string name="support">Support</string>
+    <string name="edit">Edit</string>
+    <string name="news_header">news header</string>
 </resources>

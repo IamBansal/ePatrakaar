@@ -8,8 +8,12 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
+import com.example.e_patrakaar.R
+import com.example.e_patrakaar.adapters.NewsAdapter
 import com.example.e_patrakaar.databinding.FragmentHomeBinding
+import com.example.e_patrakaar.models.News
 import com.example.e_patrakaar.ui.main.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
@@ -17,6 +21,8 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var newsList: ArrayList<News>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +38,17 @@ class HomeFragment : Fragment() {
         val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), parentFragmentManager)
         viewPager.adapter = sectionsPagerAdapter
         viewPager.isFocusable = true
+        val recyclerView = binding.rv
+        newsList = ArrayList()
+        newsAdapter = NewsAdapter(requireContext(), newsList)
+        recyclerView.adapter = newsAdapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        newsList.add(News("Lashkar terrorist...WANTED!!", "Patna, Bihar", "20-09-2022 12:16", R.drawable.download))
+        newsList.add(News("All cases to be heard by HC from tomorrow", "Delhi", "19-09-2022 19:09", R.drawable.n))
+        newsList.add(News("Unmatchable World records of Jhulan Goswami", "India", "19-09-2022 17:00", R.drawable.ne))
+        newsList.add(News("One more LOCKDOWN????", "Delhi, India", "18-09-2022 21:53", R.drawable.news))
+        newsList.add(News("Patna mein bhari hmla", "Patna, Bihar", "raat ko 11 bje", R.drawable.download))
 
         val tabLayout : TabLayout = binding.tabs
         tabLayout.setScrollPosition(0, 0f, true)
@@ -40,9 +57,9 @@ class HomeFragment : Fragment() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
-                    0 -> Toast.makeText(context, "Latest news", Toast.LENGTH_SHORT).show()
-                    1 -> Toast.makeText(context, "This is national", Toast.LENGTH_SHORT).show()
-                    2 -> Toast.makeText(context, "This is state", Toast.LENGTH_SHORT).show()
+                    0 -> recyclerView.visibility = View.VISIBLE
+                    1 -> recyclerView.visibility = View.GONE
+                    2 -> recyclerView.visibility = View.VISIBLE
                     3 -> Toast.makeText(context, "This is international", Toast.LENGTH_SHORT).show()
                     4 -> Toast.makeText(context, "This is sports", Toast.LENGTH_SHORT).show()
                     5 -> Toast.makeText(context, "This is entertainment", Toast.LENGTH_SHORT).show()
